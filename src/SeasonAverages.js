@@ -18,16 +18,16 @@ class SeasonAverages extends React.Component{
         }
     }
     
-    // getInfo = () => {
-    //     // console.log(this.state.id)
-    //     axios.get(`${API_URL}&player_ids[]=${this.state.id}`)
-    //     .then(({ data }) => {
-    //         this.setState({
-    //              results: data.data
-    //         })
-    //     })
-    //     // console.log(this.state.results)
-    //  }
+    getInfo = () => {
+        // console.log(this.state.id)
+        axios.get(`${API_URL}&player_ids[]=${this.state.id}`)
+        .then(({ data }) => {
+            this.setState({
+                 results: data.data
+            })
+        })
+        // console.log(this.state.results)
+     }
     
     render() {
         return (
