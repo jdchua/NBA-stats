@@ -1,0 +1,11 @@
+.container {
+    display: flex
+}
+
+.searchResults {
+    display: flex
+}
+
+.display-data {
+    margin: 0 10px;
+}
