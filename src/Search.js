@@ -64,11 +64,13 @@ class Search extends React.Component {
       
       
     render (){
+        const test123 = this.state.results.map(item => <SeasonAverages id={item.id} key={item.id} firstName={item.first_name} lastName={item.last_name} onClick={this.removeSearch} class="display-data" />)
         if (this.state.clicked === true) {
-            this.displayData.push(<div onClick={this.removeSearch} class="display-data">{this.state.name}</div>)
+            this.displayData.push(test123)
             this.setState ({clicked: false})
         }
-        const searchComponents = this.state.results.map(item => <SeasonAverages type="submit" id={item.id} key={item.id} firstName={item.first_name} lastName={item.last_name} onClick={this.handleClick} />)
+        console.log(this.displayData)
+        const searchComponents = this.state.results.map(item => <p type="submit"  onClick={this.handleClick}>{item.first_name} {item.last_name} </p>)
         return (
             <div class="container">
                 <form class="search">
