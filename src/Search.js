@@ -85,6 +85,7 @@ class Search extends React.Component {
                     {this.displayData}
                 </div>
             </div>
+            
         )
     }
 }
