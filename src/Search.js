@@ -2,6 +2,9 @@ import React from "react"
 import axios from "axios"
 import "./Search.css"
 import SeasonAverages from "./SeasonAverages"
+import GraphData from "./GraphData"
+
+// clean this up
 
 
 const API_URL = 'https://www.balldontlie.io/api/v1/players?per_page=10'
@@ -10,14 +13,19 @@ const API_URL = 'https://www.balldontlie.io/api/v1/players?per_page=10'
 class Search extends React.Component {
     constructor(){
         super()
+        
         this.displayData = []
+        this.seasonAvgDisp = []
+        this.graphData = []
         
         this.state = {
             query: "",
             results: [],
             name: "",
             clicked: false,
-
+            seasonAvg: [],
+            graphData: [],
+            displayTitle: false
         }
         
         this.handleClick = this.handleClick.bind(this)
@@ -29,7 +37,7 @@ class Search extends React.Component {
         axios.get(`${API_URL}&search=${this.state.query}`)
         .then(({ data }) => {
             this.setState({
-                 results: data.data
+                 results: data.data.filter(x => x.height_feet !== null)
             })
         })
      }
@@ -48,44 +56,81 @@ class Search extends React.Component {
         })
       }
       
+      removeSearch (event) {
+          event.target.remove()
+          var index = this.seasonAvgDisp.map(x => {
+            return x.props.id;
+          }).indexOf(event.target.id);  
+          
+          console.log(this.seasonAvgDisp)
+          this.seasonAvgDisp.splice(index, 1)
+          console.log(this.seasonAvgDisp)
+          
+          this.graphData.splice(index, 1)
+          
+          
+          this.setState({
+              seasonAvg:[this.seasonAvgDisp.filter(x => {
+              return x.props.id !== event.target.id;
+              })],        
+              graphData:[this.graphData.filter(x => {
+              return x.props.id !== event.target.id;
+              })]
+          })
+          //need to fix this :(
+
+      }
+      
+
       handleClick (event) {
+          const seasonAverages =  <SeasonAverages id={event.target.id} position={event.target.getAttribute("position")} team={event.target.getAttribute("team")} firstname={event.target.getAttribute("firstName")} lastname={event.target.getAttribute("lastName")} class="display-data" />
+          this.seasonAvgDisp.push(seasonAverages)
+          const graphData =  <GraphData id={event.target.id}/>
+          this.graphData.push(graphData)
+          const searchBtn =  <div id={event.target.id} class="searchButtons col-4 col-md-4 col-lg-3 col-xl-2" firstname={event.target.getAttribute("firstName")} lastname={event.target.getAttribute("lastName")} onClick={this.removeSearch}><p class="display-data" > {event.target.getAttribute("firstName")} {event.target.getAttribute("lastName")}<i class="fas fa-times-circle"></i></p></div>
+          this.displayData.push(searchBtn)
           this.setState({
               name: event.target.innerText,
               query: "",
               results: [],
-              clicked: true
+              clicked: true,
+              seasonAvg: [...this.seasonAvgDisp],
+              graphData: [...this.graphData]
           }, () => this.setState({name: ""}));
           this.search.value = "";
+
       }
-      
-      removeSearch (event) {
-          event.target.remove()
-      }
+
       
       
     render (){
-        const test123 = this.state.results.map(item => <SeasonAverages id={item.id} key={item.id} firstName={item.first_name} lastName={item.last_name} onClick={this.removeSearch} class="display-data" />)
-        if (this.state.clicked === true) {
-            this.displayData.push(test123)
-            this.setState ({clicked: false})
-        }
-        console.log(this.displayData)
-        const searchComponents = this.state.results.map(item => <p type="submit"  onClick={this.handleClick}>{item.first_name} {item.last_name} </p>)
+        const searchComponents = this.state.results.map(item => <p onClick={this.handleClick} id={item.id} position={item.position} team={item.team.abbreviation}firstname={item.first_name} lastname={item.last_name}>{item.first_name} {item.last_name} </p>)
         return (
-            <div class="container">
-                <form class="search">
-                   <input
-                     placeholder="Search for..."
-                     ref={input => this.search = input}
-                     onChange={this.handleInputChange}
-                   />
-                  <div onClick={this.handleClick}>
-                    {searchComponents}
-                  </div>
-                </form>
-                <div class="searchResults">
-                    {this.displayData}
+            <div>
+                <h3 class="pageTitle">'19 - '20 NBA Season Averages</h3>
+                <div class="cop">
+                <div class="searchComponent">
+                    <div class="searchInput">
+                        <form class="search">
+                           <input
+                             placeholder="Search for a player e.g. Lebron James"
+                             ref={input => this.search = input}
+                             onChange={this.handleInputChange}
+                           />
+                          <div>
+                            {searchComponents}
+                          </div>
+                        </form>
+                    </div>
+                    <div class="searchResults">
+                        {this.displayData}
+                    </div>
                 </div>
+                </div>
+                <div>
+                    {this.state.seasonAvg}
+                </div>
+
             </div>
         )
     }

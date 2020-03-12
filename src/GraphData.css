@@ -1,0 +1,22 @@
+.spacing {
+    margin: 0 10px;
+}
+
+.lastTenTitle {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+
+.lastTen {
+    width: 235px;
+    margin: 20px auto;
+    z-index: 1;
+    position: relative;
+    display: table;
+}
+
+.lastTen > div {
+    display: table-cell;
+    vertical-align: middle;
+}

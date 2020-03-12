@@ -1,11 +1,133 @@
-.container {
-    display: flex
+.pageTitle {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #66FCF1;
+    font-family: Teko
+
+}
+
+.searchComponent {
+    display: inline;
+    border-bottom: 1px solid #1f2833;
+    margin-bottom: 15px;
+}
+
+.searchInput {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.search {
+    margin: 10px 20px 20px 20px;
+}
+
+.search > div {
+    position: absolute;
+    width: 200px;
+    background: #1f2833;
+    border-radius: 3px;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.searchButtons {
+    margin: 7px auto;
+    cursor: pointer;
+}
+
+
+.search > div > p {
+    color: white;
+    font-weight: 900;
+}
+
+.search > div > p:first-child{
+    margin-top: 1rem;
+}
+
+.search > input {
+    border: 1.5px solid #66FCF1;
+    border-radius: 6px;
+    padding: 10px;
+    width: 200px;
+    background-color: #0B0C10;
+    color: white;
+    font-weight: 700;
 }
 
 .searchResults {
-    display: flex
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 25px;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #30363c;
+
 }
 
 .display-data {
-    margin: 0 10px;
+    text-align: center;
+    border: 3px #45A29E solid;
+    padding: 10px 0px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: white;
+    font-weight: 900;
+    pointer-events: none
+}
+
+.display-data > i {
+    pointer-events: none;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.fa-times-circle {
+    margin-left: 10px;
+    font-size: 13px;
+}
+
+@media only screen and (min-width: 768px) {
+    
+    .displayData {
+        margin: 5px;
+    }
+    
+    .pageTitle {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-top: 20px;
+    }
+    
+    .search > input {
+        width: 325px;
+    }
+    
+    .search > div {
+        width: 325px;
+    }
+    
+    .display-data {
+        font-size: 15px;
+    }
+    
+    .fa-times-circle {
+        font-size: 16px;
+    }
+    
+    .searchButtons {
+        margin: 7px auto;
+        cursor: pointer;
+    }
+    
 }
