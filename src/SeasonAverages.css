@@ -37,5 +37,17 @@
     border-bottom: 2px solid white;
     margin: 40px auto 50px auto;
     width: 60%;
+}
+
+@media only screen and (min-width: 992px) {
+    .avgStats {
+        font-size: 18px;
+        margin: 8px 4px;
+    }
+}
+
+
+
+@media only screen and (min-width: 1200px) {
 
 }

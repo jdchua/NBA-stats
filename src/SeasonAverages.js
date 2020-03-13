@@ -23,27 +23,19 @@ class SeasonAverages extends React.Component{
     }
     
     getInfo = () => {
-<<<<<<< HEAD
-=======
-        // console.log(this.state.id)
->>>>>>> master
+
         axios.get(`${API_URL}&player_ids[]=${this.state.id}`)
         .then(({ data }) => {
             this.setState({
                  results: data.data
             })
         })
-<<<<<<< HEAD
      }
      
      componentDidMount() {
         this.getInfo(); 
      }
      
-=======
-        // console.log(this.state.results)
-    }
->>>>>>> master
     
     render() {
         const gp = this.state.results.map(item => <span>{item.games_played}</span>)
