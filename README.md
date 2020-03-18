@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cookies & Kareem
+<img src="https://i1.lensdump.com/i/jgZ9MQ.png">
 
-## Available Scripts
+Web application that utilizes React.JS to provide real-time NBA Stats from the current season (2019 - 2020). Stats are categorized and represented through a line graph and individual statlines.
 
-In the project directory, you can run:
+## Demo
+Working live demo: https://cookiesandkareem.herokuapp.com/
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Clone or download this repository
+```sh
+git clone https://github.com/jdchua/NBA-stats.git
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Install dependencies
+```sh
+npm install
+```
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Categorize stats for individual players (e.g. points, rebounds, assists)
 
-### `npm run build`
+* Stats are represented through a graph that can be dynamically changed to represent different stats
+  
+* Users are allowed to search for NBA players and their respective stats
+ 
+* Responsive web design
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With
+### Front-end
+* [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)
+* [Bootstrap](https://getbootstrap.com/docs/3.3/)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [React.JS](https://reactjs.org/)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Need to do
+* Add date and opponent to graphs

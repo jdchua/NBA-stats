@@ -3,9 +3,6 @@ import axios from "axios"
 import "./SeasonAverages.css"
 import GraphData from "./GraphData"
 
-
-
-
 const API_URL = 'https://www.balldontlie.io/api/v1/season_averages?season'
 
 
@@ -23,7 +20,6 @@ class SeasonAverages extends React.Component{
     }
     
     getInfo = () => {
-
         axios.get(`${API_URL}&player_ids[]=${this.state.id}`)
         .then(({ data }) => {
             this.setState({

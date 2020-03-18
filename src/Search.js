@@ -4,8 +4,6 @@ import "./Search.css"
 import SeasonAverages from "./SeasonAverages"
 import GraphData from "./GraphData"
 
-// clean this up
-
 
 const API_URL = 'https://www.balldontlie.io/api/v1/players?per_page=10'
 
@@ -98,9 +96,7 @@ class Search extends React.Component {
               graphData: [...this.graphData]
           }, () => this.setState({name: ""}));
           this.search.value = "";
-
       }
-
       
       
     render (){

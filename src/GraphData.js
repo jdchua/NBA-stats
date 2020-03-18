@@ -29,21 +29,18 @@ class GraphData extends React.Component{
         })
      }
      
-       handleChange(event) {
-         this.setState({selected: event.target.value});
-       }
+    handleChange(event) {
+        this.setState({selected: event.target.value});
+    }
      
      componentDidMount() {
-         this.getInfo()
+        this.getInfo()
      }
      
     
     render(){
         const sortedArr = ((this.state.results).sort(function(a,b){return a.id - b.id})).slice(Math.max(this.state.results.length - 10))
-        // const ptsData = sortedArr.map(item => item.pts)
-        
         const data = sortedArr
-    
         
         
         return (
