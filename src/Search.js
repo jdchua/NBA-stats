@@ -4,9 +4,7 @@ import "./Search.css"
 import SeasonAverages from "./SeasonAverages"
 import GraphData from "./GraphData"
 
-
 const API_URL = 'https://www.balldontlie.io/api/v1/players?per_page=10'
-
 
 class Search extends React.Component {
     constructor(){
@@ -29,7 +27,6 @@ class Search extends React.Component {
         this.handleClick = this.handleClick.bind(this)
         this.removeSearch = this.removeSearch.bind(this)
     }
-    
 
      getInfo = () => {
         axios.get(`${API_URL}&search=${this.state.query}`)
@@ -39,7 +36,6 @@ class Search extends React.Component {
             })
         })
      }
-
         
       handleInputChange = () => {
         this.setState({
@@ -60,12 +56,8 @@ class Search extends React.Component {
             return x.props.id;
           }).indexOf(event.target.id);  
           
-          console.log(this.seasonAvgDisp)
           this.seasonAvgDisp.splice(index, 1)
-          console.log(this.seasonAvgDisp)
-          
           this.graphData.splice(index, 1)
-          
           
           this.setState({
               seasonAvg:[this.seasonAvgDisp.filter(x => {
@@ -75,10 +67,8 @@ class Search extends React.Component {
               return x.props.id !== event.target.id;
               })]
           })
-          //need to fix this :(
-
+          //update
       }
-      
 
       handleClick (event) {
           const seasonAverages =  <SeasonAverages id={event.target.id} position={event.target.getAttribute("position")} team={event.target.getAttribute("team")} firstname={event.target.getAttribute("firstName")} lastname={event.target.getAttribute("lastName")} class="display-data" />
@@ -97,7 +87,10 @@ class Search extends React.Component {
           }, () => this.setState({name: ""}));
           this.search.value = "";
       }
-      
+
+      handleSubmit (event) {
+        event.preventDefault();
+      }
       
     render (){
         const searchComponents = this.state.results.map(item => <p onClick={this.handleClick} id={item.id} position={item.position} team={item.team.abbreviation}firstname={item.first_name} lastname={item.last_name}>{item.first_name} {item.last_name} </p>)
@@ -107,7 +100,7 @@ class Search extends React.Component {
                 <div class="cop">
                 <div class="searchComponent">
                     <div class="searchInput">
-                        <form class="search">
+                        <form class="search" onSubmit={this.handleSubmit}>
                            <input
                              placeholder="Search for a player e.g. Lebron James"
                              ref={input => this.search = input}
@@ -126,9 +119,7 @@ class Search extends React.Component {
                 <div>
                     {this.state.seasonAvg}
                 </div>
-
             </div>
-            
         )
     }
 }
