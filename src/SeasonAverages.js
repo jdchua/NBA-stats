@@ -36,7 +36,7 @@ class SeasonAverages extends React.Component{
             this.setState({
                 isLoading: true
             });
-          }, 500);
+          }, 800);
         this.setState({
             isLoading: false
         });
