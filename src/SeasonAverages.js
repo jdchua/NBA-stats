@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import Fade from '@material-ui/core/Fade';
 import "./SeasonAverages.css"
 import GraphData from "./GraphData"
 
@@ -35,7 +36,7 @@ class SeasonAverages extends React.Component{
             this.setState({
                 isLoading: true
             });
-          }, 700);
+          }, 500);
         this.setState({
             isLoading: false
         });
@@ -99,7 +100,9 @@ class SeasonAverages extends React.Component{
 
         return (
             <div class="container">
-                {listings}
+                <Fade in={this.state.isLoading}>
+                    {listings}
+                </Fade>
             </div>
         )
     }
