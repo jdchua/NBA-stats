@@ -5,7 +5,6 @@ import GraphData from "./GraphData"
 
 const API_URL = 'https://www.balldontlie.io/api/v1/season_averages?season'
 
-
 class SeasonAverages extends React.Component{
     constructor (props){
         super()
@@ -15,7 +14,9 @@ class SeasonAverages extends React.Component{
             lastName: props.lastname,
             position: props.position,
             results:[],
-            team: props.team
+            team: props.team,
+            isloading: true
+
         }
     }
     
@@ -30,9 +31,16 @@ class SeasonAverages extends React.Component{
      
      componentDidMount() {
         this.getInfo(); 
+        setTimeout(() => {
+            this.setState({
+                isLoading: true
+            });
+          }, 700);
+        this.setState({
+            isLoading: false
+        });
      }
      
-    
     render() {
         const gp = this.state.results.map(item => <span>{item.games_played}</span>)
         const min = this.state.results.map(item => <span>{item.min}</span>)
@@ -54,50 +62,46 @@ class SeasonAverages extends React.Component{
         const tov = this.state.results.map(item => <span>{item.turnover}</span>)
         const pf = this.state.results.map(item => <span>{item.pf}</span>)
         const pts = this.state.results.map(item => <span>{item.pts}</span>)
-        
-
+      
+        let listings =
+            <div className="center" style={{display: this.state.isLoading ? "block" : "none" }}>            
+                <div className="playerInfo">
+                    <div class="name">
+                        <h3>{this.state.firstName} {this.state.lastName}</h3>
+                        <h6>Position: {this.state.position} | Team: {this.state.team}</h6>
+                    </div>
+                    <div class="statsRow">
+                        <p class="avgStats">GP {gp}</p>
+                        <p class="avgStats">MIN {min}</p>
+                        <p class="avgStats">FGM {fgm}</p>
+                        <p class="avgStats">FGA {fga}</p>
+                        <p class="avgStats">FGA {fgp}</p>
+                        <p class="avgStats">3PM {fg3m}</p>
+                        <p class="avgStats">3PA {fg3a}</p>
+                        <p class="avgStats">3P% {fg3p}</p>
+                        <p class="avgStats">FTM {ftm}</p>
+                        <p class="avgStats">FTA {fta}</p>
+                        <p class="avgStats">FT% {ftp}</p>
+                        <p class="avgStats">ORB {orb}</p>
+                        <p class="avgStats">DRB {drb}</p>
+                        <p class="avgStats">REB {reb}</p>
+                        <p class="avgStats">AST {ast}</p>
+                        <p class="avgStats">STL {stl}</p>
+                        <p class="avgStats">BLK {blk}</p>
+                        <p class="avgStats">TOV {tov}</p>
+                        <p class="avgStats">PF {pf}</p>
+                        <p class="avgStats">PTS {pts}</p>
+                    </div>
+                    <GraphData id={this.state.id}/>
+                    <div class="hr"></div>
+                </div>
+            </div>
 
         return (
             <div class="container">
-
-            <div class="playerInfo">
-                <div class="name">
-                <h3>{this.state.firstName} {this.state.lastName}</h3>
-                <h7>Position: {this.state.position} | Team: {this.state.team}</h7>
-                </div>
-
-                <div class="statsRow">
-                <p class="avgStats">GP {gp}</p>
-                <p class="avgStats">MIN {min}</p>
-                <p class="avgStats">FGM {fgm}</p>
-                <p class="avgStats">FGA {fga}</p>
-                <p class="avgStats">FGA {fgp}</p>
-                <p class="avgStats">3PM {fg3m}</p>
-                <p class="avgStats">3PA {fg3a}</p>
-                <p class="avgStats">3P% {fg3p}</p>
-                <p class="avgStats">FTM {ftm}</p>
-                <p class="avgStats">FTA {fta}</p>
-                <p class="avgStats">FT% {ftp}</p>
-                <p class="avgStats">ORB {orb}</p>
-                <p class="avgStats">DRB {drb}</p>
-                <p class="avgStats">REB {reb}</p>
-                <p class="avgStats">AST {ast}</p>
-                <p class="avgStats">STL {stl}</p>
-                <p class="avgStats">BLK {blk}</p>
-                <p class="avgStats">TOV {tov}</p>
-                <p class="avgStats">PF {pf}</p>
-                <p class="avgStats">PTS {pts}</p>
-                </div>
-                
-                <GraphData id={this.state.id}/>
-                
-                <div class="hr"></div>
-
-            </div>
-
+                {listings}
             </div>
         )
-        
     }
 }
 

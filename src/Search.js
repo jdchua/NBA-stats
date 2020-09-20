@@ -96,11 +96,11 @@ class Search extends React.Component {
         const searchComponents = this.state.results.map(item => <p onClick={this.handleClick} id={item.id} position={item.position} team={item.team.abbreviation}firstname={item.first_name} lastname={item.last_name}>{item.first_name} {item.last_name} </p>)
         return (
             <div>
-                <h3 class="pageTitle">'19 - '20 NBA Season Averages</h3>
-                <div class="cop">
-                <div class="searchComponent">
-                    <div class="searchInput">
-                        <form class="search" onSubmit={this.handleSubmit}>
+                <h3 className="pageTitle">'19 - '20 NBA Season Averages</h3>
+                <div className="cop">
+                <div className="searchComponent">
+                    <div className="searchInput">
+                        <form className="search" onSubmit={this.handleSubmit}>
                            <input
                              placeholder="Search for a player e.g. Lebron James"
                              ref={input => this.search = input}
@@ -111,7 +111,7 @@ class Search extends React.Component {
                           </div>
                         </form>
                     </div>
-                    <div class="searchResults">
+                    <div className="searchResults">
                         {this.displayData}
                     </div>
                 </div>

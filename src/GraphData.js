@@ -18,13 +18,13 @@ class GraphData extends React.Component{
             selected: "pts"
         }
         this.handleChange = this.handleChange.bind(this)
-    }
+        }
     
     getInfo = () => {
         axios.get(`${API_URL}&player_ids[]=${this.state.id}`)
         .then(({ data }) => {
             this.setState({
-                 results: data.data
+                 results: (data.data).sort(function(a,b){return a.id - b.id}).slice(Math.max(this.state.results.length - 10))
             })
         })
      }
@@ -33,16 +33,11 @@ class GraphData extends React.Component{
         this.setState({selected: event.target.value});
     }
      
-     componentDidMount() {
+    componentDidMount() {
         this.getInfo()
-     }
-     
+    }
     
-    render(){
-        const sortedArr = ((this.state.results).sort(function(a,b){return a.id - b.id})).slice(Math.max(this.state.results.length - 10))
-        const data = sortedArr
-        
-        
+    render(){    
         return (
             <div>
                 <div class="lastTen dropdown">
@@ -65,12 +60,12 @@ class GraphData extends React.Component{
                 </div>
                 
                 <ResponsiveContainer width="90%" height={400}>
-                     <LineChart data={data}>
+                     <LineChart data={[...this.state.results]}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis/>
                         <Tooltip />
-                        <Line isAnimationActive={false} type="monotone" dataKey={this.state.selected} stroke="#8884d8" strokeWidth={2}/>
+                        <Line isAnimationActive={true} animationBegin={100} type="monotone" dataKey={this.state.selected} stroke="#8884d8" strokeWidth={2}/>
                      </LineChart>
                 </ResponsiveContainer>
             </div>
