@@ -96,7 +96,7 @@ class Search extends React.Component {
         const searchComponents = this.state.results.map(item => <p onClick={this.handleClick} id={item.id} position={item.position} team={item.team.abbreviation}firstname={item.first_name} lastname={item.last_name}>{item.first_name} {item.last_name} </p>)
         return (
             <div>
-                <h3 className="pageTitle">'19 - '20 NBA Season Averages</h3>
+                <h3 className="pageTitle">2020 - 2021 NBA Season Averages</h3>
                 <div className="cop">
                 <div className="searchComponent">
                     <div className="searchInput">
