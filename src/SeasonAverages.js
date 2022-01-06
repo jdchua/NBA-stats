@@ -4,7 +4,7 @@ import Fade from '@material-ui/core/Fade';
 import "./SeasonAverages.css"
 import GraphData from "./GraphData"
 
-const API_URL = 'https://www.balldontlie.io/api/v1/season_averages?season=2020'
+const API_URL = 'https://www.balldontlie.io/api/v1/season_averages?season=2021'
 
 class SeasonAverages extends React.Component{
     constructor (props){
