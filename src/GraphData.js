@@ -6,7 +6,7 @@ import {
 } from 'recharts'
 
 
-const API_URL = "https://www.balldontlie.io/api/v1/stats?seasons[]=2020&per_page=100"
+const API_URL = "https://www.balldontlie.io/api/v1/stats?seasons[]=2021&per_page=100"
 
 
 class GraphData extends React.Component{
