@@ -1,7 +1,7 @@
-# Cookies & Kareem (NBA 2020 - 2021 NBA Season Stats)
+# Cookies & Kareem (NBA 2021 - 2022 NBA Season Stats)
 <img src="https://i1.lensdump.com/i/jgZ9MQ.png">
 
-Web application that utilizes React.JS to provide real-time NBA Stats from the current season (2020 - 2021). Stats are categorized and represented through a line graph and individual statlines.
+Web application that utilizes React.JS to provide real-time NBA Stats from the current season (2021 - 2022). Stats are categorized and represented through a line graph and individual statlines.
 
 ## Demo
 Working live demo: https://cookiesandkareem.herokuapp.com/
